@@ -4,9 +4,39 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View"
+        xmlns:ViewModel="clr-namespace:ViewModel;assembly=ViewModel" 
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <ViewModel:ColorConverter x:Key="colorConverter"/>
+    </Window.Resources>
     <Grid>
-        
+        <ItemsControl ItemsSource="{Binding Rows}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Vertical"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <ItemsControl ItemsSource="{Binding Squares}" HorizontalAlignment="Center">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <!-- TODO: Add control that draws one square -->
+                                <Button Width="64" Height="64" BorderBrush="Black" BorderThickness="1" Margin="2" Command="{Binding RelativeSource={RelativeSource FindAncestor, 
+                                AncestorType={x:Type Window}}, Path=DataContext.Command}" CommandParameter="{Binding SquarePosition}">
+                                    <Ellipse Fill="{Binding Owner, Converter={StaticResource colorConverter}}"  Width="60" Height="60"  />
+                                </Button>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
     </Grid>
 </Window>
