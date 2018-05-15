@@ -22,7 +22,7 @@ namespace ViewModel
                 }
                 if (value == Player.WHITE)
                 {
-                    return new SolidColorBrush(Colors.WhiteSmoke);
+                    return new SolidColorBrush(Colors.Red);
                 }
             }
             return new SolidColorBrush(Colors.Transparent);
