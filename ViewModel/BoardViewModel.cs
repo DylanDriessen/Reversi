@@ -2,16 +2,19 @@
 using Model.Reversi;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ViewModel
 {
-    public class BoardViewModel
+    public class BoardViewModel : INotifyPropertyChanged
     {
         public ReversiBoard board;
         public ReversiGame game;
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public List<BoardRowViewModel> Rows { get; set; }
         public PutStoneCommand Command { get; set; }
