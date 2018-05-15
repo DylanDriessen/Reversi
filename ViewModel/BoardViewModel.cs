@@ -20,6 +20,7 @@ namespace ViewModel
         {
             this.game = new ReversiGame(6, 6);
             this.Rows = new List<BoardRowViewModel>();
+            this.Command = new PutStoneCommand(this);
 
 
             for (int i = 0; i < game.Board.Height; i++)

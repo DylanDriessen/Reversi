@@ -10,10 +10,12 @@ namespace ViewModel
 {
     public class PutStoneCommand : ICommand
     {
+
         public BoardViewModel BoardView { get; set; }
 
         public PutStoneCommand(BoardViewModel bvm)
         {
+            System.Diagnostics.Debug.WriteLine("PutStoneCommand");
             this.BoardView = bvm;
         }
 
@@ -21,7 +23,7 @@ namespace ViewModel
 
         public bool CanExecute(object parameter)
         {
-            return true;
+            return BoardView.game.IsValidMove((Vector2D)parameter);
         }
 
         public void Execute(object parameter)

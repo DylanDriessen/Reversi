@@ -28,10 +28,11 @@ namespace ViewModel
         public Player Owner
         {
             get { return owner; }
-            set { owner = value; OnPropertyChanged("Owner"); }
+            set { owner = value; OnPropertyChanged("owner"); }
         }
 
         public Player Position { get; set; }
+
         public Vector2D SquarePosition { get; set; }
 
         public BoardSquareViewModel(ReversiGame game)
