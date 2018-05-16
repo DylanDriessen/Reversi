@@ -13,18 +13,22 @@ namespace ViewModel
     {
         public ReversiBoard board;
         public ReversiGame game;
+        private int blackStones;
+        private int whiteStones;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
         public List<BoardRowViewModel> Rows { get; set; }
         public PutStoneCommand Command { get; set; }
+        public CountStoneCommand CountCommand { get; set; }
+        public ReversiGame Value { get; set; }
 
         public BoardViewModel()
         {
             this.game = new ReversiGame(6, 6);
             this.Rows = new List<BoardRowViewModel>();
             this.Command = new PutStoneCommand(this);
-
+            this.CountCommand = new CountStoneCommand(this);
 
             for (int i = 0; i < game.Board.Height; i++)
             {
@@ -47,7 +51,45 @@ namespace ViewModel
                 for (int j = 0; j < board.Width; j++)
                 {
                     Rows[i].Squares[j].Owner = game.Board[new Vector2D(j, i)];
+
                 }
+            }
+        }
+
+
+        protected void OnPropertyChanged(String property)
+        {
+            PropertyChangedEventHandler h = PropertyChanged;
+            if (null != h)
+            {
+                h(this, new PropertyChangedEventArgs(property));
+            }
+        }
+
+        public int CountBlack
+        {
+            get
+            {
+                this.blackStones = this.game.Board.CountStones(Player.BLACK);
+                return blackStones;
+            }
+            set
+            {
+                blackStones = value; OnPropertyChanged("CountBlack");
+                System.Diagnostics.Debug.WriteLine(blackStones + " in setter");
+            }
+        }
+
+        public int CountWhite
+        {
+            get
+            {
+                this.whiteStones = this.game.Board.CountStones(Player.WHITE);
+                return whiteStones;
+            }
+            set
+            {
+                whiteStones = value; OnPropertyChanged("CountWhite");
             }
         }
     }

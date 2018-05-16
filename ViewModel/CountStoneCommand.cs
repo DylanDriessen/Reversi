@@ -9,14 +9,12 @@ using System.Windows.Input;
 
 namespace ViewModel
 {
-    public class PutStoneCommand : ICommand
+    public class CountStoneCommand : ICommand
     {
-
         public BoardViewModel BoardView { get; set; }
 
-        public PutStoneCommand(BoardViewModel bvm)
+        public CountStoneCommand(BoardViewModel bvm)
         {
-            System.Diagnostics.Debug.WriteLine("PutStoneCommand");
             this.BoardView = bvm;
         }
 
@@ -28,17 +26,14 @@ namespace ViewModel
 
         public bool CanExecute(object parameter)
         {
-            return BoardView.game.IsValidMove((Vector2D)parameter);
+            return true;
         }
 
         public void Execute(object parameter)
         {
-            BoardView.game = BoardView.game.PutStone((Vector2D)parameter);
-
             BoardView.CountBlack = BoardView.game.Board.CountStones(Player.BLACK);
             BoardView.CountWhite = BoardView.game.Board.CountStones(Player.WHITE);
             System.Diagnostics.Debug.WriteLine(BoardView.CountBlack + " aantal zwart");
-            System.Diagnostics.Debug.WriteLine("Execute");
             BoardView.NotifyElement();
         }
     }

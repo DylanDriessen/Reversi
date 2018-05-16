@@ -17,10 +17,13 @@
     <DockPanel>
         <StackPanel HorizontalAlignment="Right" DockPanel.Dock="Left" Margin="5,25,15,5">
             <Label Foreground="Red" Background="LightGray">Player one - Red:</Label>
+            <Label Foreground="White" Content="{Binding CountWhite}" />
             <Ellipse Fill="Red" Opacity=".85" Width="80" Height="80" Margin="0 10 0 0"/>
+            <!--<TextBlock Foreground="Red" Background="LightGray" Text="{Binding CountWhite}"/>-->
         </StackPanel>
         <StackPanel HorizontalAlignment="Center" DockPanel.Dock="Right" Margin="5,25,15,5" >
             <Label Foreground="Black" Background="LightGray" HorizontalContentAlignment="Right">Player two - Black:</Label>
+            <Label Foreground="White" HorizontalContentAlignment="Right" Content="{Binding CountBlack}" />
             <Ellipse Fill="Black" Opacity=".85" Width="80" Height="80" Margin="0 10 0 0"/>
         </StackPanel>
         <StackPanel DockPanel.Dock="Bottom">

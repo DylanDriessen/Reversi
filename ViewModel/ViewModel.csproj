@@ -46,6 +46,7 @@
     <Compile Include="BoardSquareViewModel.cs" />
     <Compile Include="BoardViewModel.cs" />
     <Compile Include="ColorConverter.cs" />
+    <Compile Include="CountStoneCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PutStoneCommand.cs" />
   </ItemGroup>
