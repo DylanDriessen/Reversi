@@ -13,15 +13,16 @@ namespace ViewModel
     {
         public ReversiBoard board;
         public ReversiGame game;
+        public Player player;
         private int blackStones;
         private int whiteStones;
+        private Player playertest;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
         public List<BoardRowViewModel> Rows { get; set; }
         public PutStoneCommand Command { get; set; }
         public CountStoneCommand CountCommand { get; set; }
-        public ReversiGame Value { get; set; }
 
         public BoardViewModel()
         {
@@ -63,6 +64,18 @@ namespace ViewModel
             if (null != h)
             {
                 h(this, new PropertyChangedEventArgs(property));
+            }
+        }
+
+        public Player CurrentPlayer
+        {
+            get
+            {
+                return game.CurrentPlayer;
+            }
+            set
+            {
+                this.player = value; OnPropertyChanged("CurrentPlayer");
             }
         }
 

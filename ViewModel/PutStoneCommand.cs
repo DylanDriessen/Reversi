@@ -35,6 +35,7 @@ namespace ViewModel
         {
             BoardView.game = BoardView.game.PutStone((Vector2D)parameter);
 
+            BoardView.CurrentPlayer = BoardView.game.CurrentPlayer;
             BoardView.CountBlack = BoardView.game.Board.CountStones(Player.BLACK);
             BoardView.CountWhite = BoardView.game.Board.CountStones(Player.WHITE);
             System.Diagnostics.Debug.WriteLine(BoardView.CountBlack + " aantal zwart");
