@@ -1,4 +1,5 @@
-﻿using Model.Reversi;
+﻿using Cells;
+using Model.Reversi;
 using System;
 using System.Collections.Generic;
 using System.Linq;

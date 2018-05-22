@@ -12,7 +12,7 @@
         <ViewModel:ColorConverter x:Key="colorConverter"/>
     </Window.Resources>
     <Window.Background>
-        <ImageBrush ImageSource="D:\Documenten\UCLL\Tweede jaar\VGO\Reversi\ViewModel\Images\Great-Battle.jpg"/>
+        <ImageBrush ImageSource="Images\Great-Battle.jpg"/>
     </Window.Background>
     <DockPanel>
         <StackPanel DockPanel.Dock="Bottom" HorizontalAlignment="Right" Orientation="Horizontal" >
@@ -23,7 +23,6 @@
             <Label Foreground="Red" Background="LightGray">Player one - Red:</Label>
             <Label Foreground="White" Content="{Binding CountWhite}" />
             <!--<Ellipse Fill="{Binding CurrentPlayer, Converter={StaticResource colorConverter}}"  Width="60" Height="60" />-->
-            <!--<TextBlock Foreground="Red" Background="LightGray" Text="{Binding CountWhite}"/>-->
         </StackPanel>
         <StackPanel HorizontalAlignment="Center" DockPanel.Dock="Right" Margin="5,25,15,5" >
             <Label Foreground="Black" Background="LightGray" HorizontalContentAlignment="Right">Player two - Black:</Label>

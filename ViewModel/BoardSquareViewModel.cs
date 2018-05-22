@@ -1,4 +1,5 @@
-﻿using DataStructures;
+﻿using Cells;
+using DataStructures;
 using Model.Reversi;
 using System;
 using System.Collections.Generic;
@@ -9,21 +10,10 @@ using System.Threading.Tasks;
 
 namespace ViewModel
 {
-    public class BoardSquareViewModel : INotifyPropertyChanged
+    public class BoardSquareViewModel : PropertyChangedEvent
     {
         private ReversiGame game;
         private Player owner;
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected void OnPropertyChanged(String name)
-        {
-            PropertyChangedEventHandler h = PropertyChanged;
-            if (null != h)
-            {
-                h(this, new PropertyChangedEventArgs(name));
-            }
-        }
 
         public Player Owner
         {

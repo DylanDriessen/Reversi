@@ -1,4 +1,5 @@
-﻿using DataStructures;
+﻿using Cells;
+using DataStructures;
 using Model.Reversi;
 using System;
 using System.Collections.Generic;
@@ -9,27 +10,22 @@ using System.Threading.Tasks;
 
 namespace ViewModel
 {
-    public class BoardViewModel : INotifyPropertyChanged
+    public class BoardViewModel : PropertyChangedEvent
     {
         public ReversiBoard board;
         public ReversiGame game;
         public Player player;
         private int blackStones;
         private int whiteStones;
-        private Player playertest;
-
-        public event PropertyChangedEventHandler PropertyChanged;
 
         public List<BoardRowViewModel> Rows { get; set; }
         public PutStoneCommand Command { get; set; }
-        public CountStoneCommand CountCommand { get; set; }
 
         public BoardViewModel()
         {
             this.game = new ReversiGame(6, 6);
             this.Rows = new List<BoardRowViewModel>();
-            this.Command = new PutStoneCommand(this);
-            this.CountCommand = new CountStoneCommand(this);
+            this.Command = new PutStoneCommand(this);      
 
             for (int i = 0; i < game.Board.Height; i++)
             {
@@ -37,12 +33,52 @@ namespace ViewModel
                 for (int j = 0; j < game.Board.Width; j++)
                 {
                     boardRow.Squares[j].Owner = game.Board[new Vector2D(j, i)];
-                    System.Diagnostics.Debug.WriteLine(boardRow.Squares[j].Owner + " Owner");
                     boardRow.Squares[j].SquarePosition = new Vector2D(j, i);
                 }
                 Rows.Add(boardRow);
             }
         }
+
+        public Player CurrentPlayer
+        {
+            get
+            {
+                return game.CurrentPlayer;
+            }
+            set
+            {
+                this.player = value; OnPropertyChanged(nameof(CurrentPlayer));
+            }
+        }
+
+        public int CountBlack
+        {
+            get
+            {
+                this.blackStones = this.game.Board.CountStones(Player.BLACK);
+                return blackStones;
+            }
+            set
+            {
+                blackStones = value; OnPropertyChanged(nameof(CountBlack));
+                System.Diagnostics.Debug.WriteLine(blackStones + " in setter");
+            }
+        }
+
+        public int CountWhite
+        {
+            get
+            {
+                this.whiteStones = this.game.Board.CountStones(Player.WHITE);
+                return whiteStones;
+            }
+            set
+            {
+                whiteStones = value; OnPropertyChanged(nameof(CountWhite));
+            }
+        }
+
+
 
         public void NotifyElement()
         {
@@ -57,53 +93,5 @@ namespace ViewModel
             }
         }
 
-
-        protected void OnPropertyChanged(String property)
-        {
-            PropertyChangedEventHandler h = PropertyChanged;
-            if (null != h)
-            {
-                h(this, new PropertyChangedEventArgs(property));
-            }
-        }
-
-        public Player CurrentPlayer
-        {
-            get
-            {
-                return game.CurrentPlayer;
-            }
-            set
-            {
-                this.player = value; OnPropertyChanged("CurrentPlayer");
-            }
-        }
-
-        public int CountBlack
-        {
-            get
-            {
-                this.blackStones = this.game.Board.CountStones(Player.BLACK);
-                return blackStones;
-            }
-            set
-            {
-                blackStones = value; OnPropertyChanged("CountBlack");
-                System.Diagnostics.Debug.WriteLine(blackStones + " in setter");
-            }
-        }
-
-        public int CountWhite
-        {
-            get
-            {
-                this.whiteStones = this.game.Board.CountStones(Player.WHITE);
-                return whiteStones;
-            }
-            set
-            {
-                whiteStones = value; OnPropertyChanged("CountWhite");
-            }
-        }
     }
 }
