@@ -12,20 +12,47 @@ namespace ViewModel
 {
     public class BoardViewModel : PropertyChangedEvent
     {
+        private ReversiGame _game;
+        private ReversiBoard _board;
         public ReversiBoard board;
+        //        {
+        //            get { return _board; }
+        //    set
+        //            {
+        //                this._board = value; OnPropertyChanged(nameof(board));
+        //    }
+        //}
         public ReversiGame game;
-        public Player player;
+//        {
+//            get { return _game; }
+//    set
+//            {
+//                this._game = value; OnPropertyChanged(nameof(game));
+//    }
+//}
+public Player player;
         private int blackStones;
         private int whiteStones;
+        private int height;
+        private int width;
 
         public List<BoardRowViewModel> Rows { get; set; }
         public PutStoneCommand Command { get; set; }
+        public Restart restartCommand { get; set; }
 
         public BoardViewModel()
         {
-            this.game = new ReversiGame(6, 6);
+            try
+            {
+                this.game = new ReversiGame(height, width);
+            }
+            catch
+            {
+                this.game = new ReversiGame(6, 6);
+            }
             this.Rows = new List<BoardRowViewModel>();
-            this.Command = new PutStoneCommand(this);      
+            this.Command = new PutStoneCommand(this);
+            this.restartCommand = new Restart(this);
 
             for (int i = 0; i < game.Board.Height; i++)
             {
@@ -36,6 +63,32 @@ namespace ViewModel
                     boardRow.Squares[j].SquarePosition = new Vector2D(j, i);
                 }
                 Rows.Add(boardRow);
+            }
+        }
+
+
+
+        public int Height
+        {
+            get
+            {
+                return game.Board.Height;
+            }
+            set
+            {
+                this.height = value; OnPropertyChanged(nameof(Height));
+            }
+        }
+
+        public int Width
+        {
+            get
+            {
+                return game.Board.Width;
+            }
+            set
+            {
+                this.width = value; OnPropertyChanged(nameof(Width));
             }
         }
 
@@ -78,8 +131,6 @@ namespace ViewModel
             }
         }
 
-
-
         public void NotifyElement()
         {
             this.board = game.Board;
@@ -88,10 +139,8 @@ namespace ViewModel
                 for (int j = 0; j < board.Width; j++)
                 {
                     Rows[i].Squares[j].Owner = game.Board[new Vector2D(j, i)];
-
                 }
             }
         }
-
     }
 }

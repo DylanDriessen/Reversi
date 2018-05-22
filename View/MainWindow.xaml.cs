@@ -25,9 +25,12 @@ namespace View
         public MainWindow()
         {
             InitializeComponent();
-            var viewModel = new BoardViewModel();
-            this.DataContext = viewModel;
             //this.DataContext = new Navigator();
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 
