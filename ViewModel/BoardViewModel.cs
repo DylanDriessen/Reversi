@@ -5,32 +5,19 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace ViewModel
 {
     public class BoardViewModel : PropertyChangedEvent
     {
-        private ReversiGame _game;
-        private ReversiBoard _board;
         public ReversiBoard board;
-        //        {
-        //            get { return _board; }
-        //    set
-        //            {
-        //                this._board = value; OnPropertyChanged(nameof(board));
-        //    }
-        //}
         public ReversiGame game;
-//        {
-//            get { return _game; }
-//    set
-//            {
-//                this._game = value; OnPropertyChanged(nameof(game));
-//    }
-//}
-public Player player;
+        public Player player;
+
         private int blackStones;
         private int whiteStones;
         private int height;
@@ -38,13 +25,16 @@ public Player player;
 
         public List<BoardRowViewModel> Rows { get; set; }
         public PutStoneCommand Command { get; set; }
-        public Restart restartCommand { get; set; }
+        public RestartCommand restartCommand { get; set; }
+        public EndGameCommand endGameCommand { get; set; }
+        public OptionsViewModel optionsView { get; set; }
+        public StartWindow startWindow { get; set; }
 
-        public BoardViewModel()
+        public BoardViewModel(ReversiBoard reversiBoard, OptionsViewModel options)
         {
             try
             {
-                this.game = new ReversiGame(height, width);
+                this.game = new ReversiGame(reversiBoard.Width, reversiBoard.Height);
             }
             catch
             {
@@ -52,7 +42,9 @@ public Player player;
             }
             this.Rows = new List<BoardRowViewModel>();
             this.Command = new PutStoneCommand(this);
-            this.restartCommand = new Restart(this);
+            this.restartCommand = new RestartCommand(this);
+            this.optionsView = options;
+            this.endGameCommand = new EndGameCommand(optionsView, this);
 
             for (int i = 0; i < game.Board.Height; i++)
             {
@@ -66,7 +58,9 @@ public Player player;
             }
         }
 
-
+        public BoardViewModel()
+        {
+        }
 
         public int Height
         {
@@ -114,7 +108,6 @@ public Player player;
             set
             {
                 blackStones = value; OnPropertyChanged(nameof(CountBlack));
-                System.Diagnostics.Debug.WriteLine(blackStones + " in setter");
             }
         }
 
@@ -141,6 +134,11 @@ public Player player;
                     Rows[i].Squares[j].Owner = game.Board[new Vector2D(j, i)];
                 }
             }
+        }
+
+        public void btnClick(object sender, RoutedEventArgs e)
+        {
+            SystemSounds.Beep.Play();
         }
     }
 }

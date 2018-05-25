@@ -18,7 +18,7 @@ namespace ViewModel
             {
                 if (value == Player.BLACK)
                 {
-                    return new SolidColorBrush(Colors.Green);
+                    return new SolidColorBrush(Colors.Blue);
                 }
                 if (value == Player.WHITE)
                 {

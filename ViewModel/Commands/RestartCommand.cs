@@ -8,12 +8,12 @@ using System.Windows.Input;
 
 namespace ViewModel
 {
-    public class Restart : ICommand
+    public class RestartCommand : ICommand
     {
 
         public BoardViewModel BoardView { get; set; }
 
-        public Restart(BoardViewModel bvm)
+        public RestartCommand(BoardViewModel bvm)
         {
             this.BoardView = bvm;
         }

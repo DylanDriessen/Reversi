@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="View.StartWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:View"
+             mc:Ignorable="d" 
+             Height="380" Width="380"
+             FontFamily="Verdana" FontSize="14" FontWeight="Bold" Foreground="Black">
+    <UserControl.Background>
+        <ImageBrush ImageSource="Images\mariosonic.jpg"/>
+    </UserControl.Background>
+    <DockPanel HorizontalAlignment="Center">
+        <StackPanel Opacity="0.75" Background="White">
+        <StackPanel VerticalAlignment="Top" Orientation="Vertical" DockPanel.Dock="Top" Margin="10" Width="158">
+            <TextBlock>Welcome to Reversi</TextBlock>
+            <TextBlock HorizontalAlignment="Center" Margin="0,20,0,0">Please enter</TextBlock>
+            <TextBlock HorizontalAlignment="Center">your names</TextBlock>
+            </StackPanel>
+        <StackPanel Margin="15" HorizontalAlignment="Center" DockPanel.Dock="Top">
+            <WrapPanel>
+                <TextBlock Text="Player 1:  "/>
+                <TextBox Text="" Width="100"/>
+            </WrapPanel>
+            <WrapPanel Margin="0,10,0,0">
+                <TextBlock Text="Player 2:  "/>
+                <TextBox Text="" Width="100"/>
+            </WrapPanel>
+        </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <TextBlock HorizontalAlignment="Center">Choose the size</TextBlock>
+                <TextBlock HorizontalAlignment="Center">of your board</TextBlock>
+        </StackPanel>
+        <StackPanel Margin="15,30,15,15" HorizontalAlignment="Center">
+            <WrapPanel>
+                <TextBlock Text="Width:   "/>
+                <TextBox Text="{Binding Width}" Width="50"/>
+            </WrapPanel>
+            <WrapPanel Margin="0,10,0,0">
+                <TextBlock Text="Height:  "/>
+                <TextBox Text="{Binding Height}" Width="50"/>
+            </WrapPanel>
+            <WrapPanel Margin="0,20,0,0">
+              <Button Command="{Binding screenCommand }" Content="Start Game"/>
+            </WrapPanel>
+        </StackPanel>
+        </StackPanel>
+    </DockPanel>
+</UserControl>

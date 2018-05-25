@@ -19,7 +19,7 @@ namespace View
             base.OnStartup(e);
 
             var window = new MainWindow();
-            window.DataContext = new BoardViewModel();
+            window.DataContext = new OptionsViewModel();
             window.Show();
         }
     }

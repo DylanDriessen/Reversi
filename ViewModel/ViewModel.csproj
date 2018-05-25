@@ -46,10 +46,16 @@
     <Compile Include="BoardSquareViewModel.cs" />
     <Compile Include="BoardViewModel.cs" />
     <Compile Include="ColorConverter.cs" />
+    <Compile Include="Commands\EndGameCommand.cs" />
+    <Compile Include="Commands\NewGameCommand.cs" />
+    <Compile Include="EndWindow.cs" />
+    <Compile Include="Commands\ScreenCommand.cs" />
+    <Compile Include="StartWindow.cs" />
+    <Compile Include="OptionsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropertyChangedEvent.cs" />
-    <Compile Include="PutStoneCommand.cs" />
-    <Compile Include="Restart.cs" />
+    <Compile Include="Commands\PutStoneCommand.cs" />
+    <Compile Include="Commands\RestartCommand.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Cells\Cells.csproj">

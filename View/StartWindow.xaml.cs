@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,18 +12,18 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using ViewModel;
 
 namespace View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for StartWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class StartWindow : UserControl
     {
-        public MainWindow()
+        public StartWindow()
         {
             InitializeComponent();
+            System.Diagnostics.Debug.WriteLine("StartWindow");
         }
     }
 }
