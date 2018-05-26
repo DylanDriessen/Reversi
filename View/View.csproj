@@ -139,10 +139,12 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Resource Include="Images\mariosonicolympic_960364b.jpg" />
     <Resource Include="Images\246x0w.jpg" />
     <Resource Include="Images\mariosonic.jpg" />
     <Resource Include="Images\Ni3AWru__400x400.png" />
     <Resource Include="Images\maxresdefault.jpg" />
+    <Resource Include="Images\Winnaar.jpg" />
     <Content Include="Sound\VGO.mp3" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

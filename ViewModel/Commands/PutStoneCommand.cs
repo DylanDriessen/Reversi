@@ -11,8 +11,10 @@ namespace ViewModel
 {
     public class PutStoneCommand : ICommand
     {
-
+        public OptionsViewModel optionsView { get; set; }
         public BoardViewModel BoardView { get; set; }
+        public StartWindow startWindow { get; set; }
+        public EndGameCommand endGameCommand { get; set; }
 
         public PutStoneCommand(BoardViewModel bvm)
         {
@@ -38,6 +40,10 @@ namespace ViewModel
             BoardView.Width = BoardView.game.Board.Width;
             BoardView.CountBlack = BoardView.game.Board.CountStones(Player.BLACK);
             BoardView.CountWhite = BoardView.game.Board.CountStones(Player.WHITE);
+            if (BoardView.game.IsGameOver)
+            {
+                endGameCommand = new EndGameCommand(optionsView, BoardView);
+            }
             BoardView.NotifyElement();
         }
     }

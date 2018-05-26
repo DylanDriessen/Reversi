@@ -10,9 +10,9 @@ namespace ViewModel
 {
     public class EndWindow : PropertyChangedEvent
     {
-        public ReversiGame game;
+        public ReversiGame game { get; set; }
         public Player player;
-        public Player endResult { get; set; }
+        public string endResult { get; set; }
 
         public BoardViewModel bvm { get; set; }
         public OptionsViewModel optionsView { get; set; }
@@ -26,22 +26,6 @@ namespace ViewModel
             this.endGameCommand = new EndGameCommand(optionsView, bvm);
             this.newGameCommand = new NewGameCommand(optionsView, this);
         }
-
-        public Player Result
-        {
-            get{
-                return endResult;
-            }
-            set{
-                if(game.Board.CountStones(Player.BLACK) > game.Board.CountStones(Player.WHITE))
-                {
-                   endResult = Player.BLACK;
-                }
-                if (game.Board.CountStones(Player.BLACK) < game.Board.CountStones(Player.WHITE))
-                {
-                   endResult = Player.WHITE;
-                }
-            }
-        }
     }
 }
+

@@ -41,10 +41,14 @@ namespace ViewModel
             try
             {
                 bvm = new BoardViewModel(ReversiBoard.CreateInitialState(startWindow.Width, startWindow.Height), optionsView);
+                bvm.playerOne = startWindow.playerOne;
+                bvm.playerTwo = startWindow.playerTwo;
             }
             catch(Exception)
             {
                 bvm = new BoardViewModel(ReversiBoard.CreateInitialState(6, 6), optionsView);
+                bvm.playerOne = startWindow.playerOne;
+                bvm.playerTwo = startWindow.playerTwo;
             }
             this.optionsView.SelectedOptionPane = new OptionsViewModel.OptionsCategory(bvm);
         }

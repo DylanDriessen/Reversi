@@ -11,7 +11,7 @@
         <ViewModel:ColorConverter x:Key="colorConverter"/>
     </UserControl.Resources>
     <UserControl.Background>
-        <ImageBrush ImageSource="Images\maxresdefault.jpg"/>
+        <ImageBrush ImageSource="Images\mariosonicolympic_960364b.jpg"/>
     </UserControl.Background>
     <DockPanel>
         <StackPanel DockPanel.Dock="Bottom" HorizontalAlignment="Right" Orientation="Horizontal" >
@@ -19,13 +19,13 @@
             <Ellipse Fill="{Binding CurrentPlayer, Converter={StaticResource colorConverter}}"  Width="60" Height="60" />
         </StackPanel>
         <StackPanel HorizontalAlignment="Right" DockPanel.Dock="Left" Margin="5,25,15,5">
-            <Label Foreground="Red" Background="LightGray" Content=""/>
-            <Label Foreground="Red" Background="LightGray" Content="{Binding CountWhite}" Margin="60,5,70,0"/>
+            <Label Foreground="Blue" Background="LightGray" Content="{Binding playerOne}"/>
+            <Label Foreground="Blue" Background="LightGray" Content="{Binding CountBlack}" Margin="60,5,70,0"/>
             <!--<Ellipse Fill="{Binding CurrentPlayer, Converter={StaticResource colorConverter}}"  Width="60" Height="60" Visibility="Hidden"/>-->
         </StackPanel>
         <StackPanel HorizontalAlignment="Center" DockPanel.Dock="Right" Margin="5,25,15,5" >
-            <Label Foreground="Blue" Background="LightGray" HorizontalContentAlignment="Right" Content=""/>
-            <Label Foreground="Blue" Background="LightGray" HorizontalContentAlignment="Right" Content="{Binding CountBlack}" Margin="70,5,60,0" />
+            <Label Foreground="Red" Background="LightGray" HorizontalContentAlignment="Right" Content="{Binding playerTwo}"/>
+            <Label Foreground="Red" Background="LightGray" HorizontalContentAlignment="Right" Content="{Binding CountWhite}" Margin="70,5,60,0" />
             <!--<Ellipse Fill="{Binding CurrentPlayer, Converter={StaticResource colorConverter}}"  Width="60" Height="60" />-->
         </StackPanel>
         <StackPanel DockPanel.Dock="Bottom">

@@ -20,11 +20,11 @@
         <StackPanel Margin="15" HorizontalAlignment="Center" DockPanel.Dock="Top">
             <WrapPanel>
                 <TextBlock Text="Player 1:  "/>
-                <TextBox Text="" Width="100"/>
+                <TextBox Text="{Binding playerOne}" Width="100"/>
             </WrapPanel>
             <WrapPanel Margin="0,10,0,0">
                 <TextBlock Text="Player 2:  "/>
-                <TextBox Text="" Width="100"/>
+                <TextBox Text="{Binding playerTwo}" Width="100"/>
             </WrapPanel>
         </StackPanel>
             <StackPanel Orientation="Vertical">

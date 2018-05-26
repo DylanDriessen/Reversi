@@ -29,6 +29,8 @@ namespace ViewModel
         public EndGameCommand endGameCommand { get; set; }
         public OptionsViewModel optionsView { get; set; }
         public StartWindow startWindow { get; set; }
+        public string playerOne { get; set; }
+        public string playerTwo { get; set; }
 
         public BoardViewModel(ReversiBoard reversiBoard, OptionsViewModel options)
         {
@@ -134,11 +136,6 @@ namespace ViewModel
                     Rows[i].Squares[j].Owner = game.Board[new Vector2D(j, i)];
                 }
             }
-        }
-
-        public void btnClick(object sender, RoutedEventArgs e)
-        {
-            SystemSounds.Beep.Play();
         }
     }
 }

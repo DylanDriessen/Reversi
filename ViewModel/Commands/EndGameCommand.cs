@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model.Reversi;
+using System;
 using System.Windows.Input;
 
 namespace ViewModel
@@ -28,7 +29,21 @@ namespace ViewModel
 
         public void Execute(object parameter)
         {
-            this.optionsView.SelectedOptionPane = new OptionsViewModel.OptionsCategory(new EndWindow(optionsView));
+            EndWindow endWindow;
+            endWindow = new EndWindow(optionsView);
+            if (BoardView.CountBlack > BoardView.CountWhite)
+            {
+                endWindow.endResult = BoardView.playerOne;
+            }
+            if (BoardView.CountBlack < BoardView.CountWhite)
+            {
+                endWindow.endResult = BoardView.playerTwo;
+            }
+            if (BoardView.CountBlack == BoardView.CountWhite)
+            {
+                endWindow.endResult = "DRAW";
+            }
+            this.optionsView.SelectedOptionPane = new OptionsViewModel.OptionsCategory(endWindow);          
         }
     } 
 }

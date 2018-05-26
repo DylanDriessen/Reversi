@@ -23,7 +23,6 @@ namespace View
         public StartWindow()
         {
             InitializeComponent();
-            System.Diagnostics.Debug.WriteLine("StartWindow");
         }
     }
 }
