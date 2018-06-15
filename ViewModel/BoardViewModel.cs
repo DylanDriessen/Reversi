@@ -88,7 +88,7 @@ namespace ViewModel
                 if (_currentTime == value)
                     return;
                 _currentTime = value;
-                OnPropertyChanged("CurrentTime");
+                OnPropertyChanged(nameof(CurrentTime));
             }
         }
 

@@ -20,11 +20,11 @@
         </StackPanel>
         <StackPanel HorizontalAlignment="Right" DockPanel.Dock="Left">
             <Label Foreground="Blue" Background="LightGray" Content="{Binding playerOne}" Margin="25,25,25,5" />
-            <Label Foreground="Blue" Background="LightGray" Content="{Binding CountBlack}" Margin="35,5,40,5" />
+            <Label Foreground="Blue" Background="LightGray" Content="{Binding CountBlack}" Margin="30,5,35,5" />
         </StackPanel>
         <StackPanel HorizontalAlignment="Center" DockPanel.Dock="Right">
             <Label Foreground="Red" Background="LightGray" Content="{Binding playerTwo}" Margin="25,25,25,5" />
-            <Label Foreground="Red" Background="LightGray" Content="{Binding CountWhite}" Margin="40,5,35,5" Padding="10" />
+            <Label Foreground="Red" Background="LightGray" Content="{Binding CountWhite}" Margin="40,5,30,5" />
         </StackPanel>
         <StackPanel DockPanel.Dock="Bottom">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="229,0,228.6,0">

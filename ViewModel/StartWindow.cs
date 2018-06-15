@@ -7,7 +7,7 @@ namespace ViewModel
     {
         public ScreenCommand screenCommand { get; set; }
         public OptionsViewModel optionsView { get; set; }
-        public static ReversiBoard Board { get; set; }
+        public ReversiBoard Board { get; set; }
         public ReversiGame game { get; set; }
         public Player player { get; set; }
 

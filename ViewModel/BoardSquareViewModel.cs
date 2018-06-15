@@ -18,7 +18,7 @@ namespace ViewModel
         public Player Owner
         {
             get { return owner; }
-            set { owner = value; OnPropertyChanged("owner"); }
+            set { owner = value; OnPropertyChanged(nameof(owner)); }
         }
 
         public Player Position { get; set; }
