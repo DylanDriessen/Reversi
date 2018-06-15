@@ -15,7 +15,7 @@ namespace ViewModel
             var StartWindow = new StartWindow(this);
             this.OptionPanes = new List<object> {
                 new OptionsCategory(StartWindow),
-                new OptionsCategory( new BoardViewModel(StartWindow.Board, this)),
+                new OptionsCategory(new BoardViewModel(StartWindow.Board, this)),
                 new OptionsCategory(new EndWindow(this))
             };
             this.SelectedOptionPane = OptionPanes.First();

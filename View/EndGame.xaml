@@ -6,16 +6,22 @@
              xmlns:local="clr-namespace:View"
              mc:Ignorable="d" 
              Height="300" Width="450">
+    <!--<UserControl.Resources>
+        --><!--<Style x:Key="CustomFont">
+            <Setter Property="TextElement.FontFamily" Value="\Fonts\SuperMario256.ttf">
+            </Setter>
+        </Style>--><!--
+    </UserControl.Resources>-->
     <UserControl.Background>
         <ImageBrush ImageSource="Images\Winnaar.jpg"/>
     </UserControl.Background>
-    <DockPanel HorizontalAlignment="Center">
+    <DockPanel HorizontalAlignment="Center" >
         <StackPanel>
-            <WrapPanel Margin="0,50,0,0">
-                <TextBlock Text="Winner: "/>
-                <TextBlock Text="{Binding endResult}"/>
+            <WrapPanel  Margin="0,50,0,0" VerticalAlignment="Center" Background="MidnightBlue" Opacity="0.80">
+                <TextBlock Text="Winner: " FontFamily="Snap ITC" Foreground="Gold" FontSize="50"/>
+                <TextBlock Text="{Binding endResult}" FontFamily="Snap ITC" Foreground="Gold" FontSize="50"/>
             </WrapPanel>
-            <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,180,0,0">
+            <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,120,0,0">
                 <Button Command="{Binding newGameCommand}" Content="Restart"/>
             </WrapPanel>
         </StackPanel>

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DataStructures;
+using Model.Reversi;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +12,7 @@ namespace ViewModel.Commands
     public class NewGameCommand : ICommand
     {
         private EndWindow endWindow;
+        public BoardViewModel BoardView { get; set; }
 
         public NewGameCommand(OptionsViewModel optionsView, EndWindow endWindow)
         {
@@ -22,8 +25,8 @@ namespace ViewModel.Commands
 
         public event EventHandler CanExecuteChanged
         {
-            add { }
-            remove { }
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
         }
 
         public bool CanExecute(object parameter)

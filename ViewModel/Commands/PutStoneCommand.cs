@@ -29,7 +29,7 @@ namespace ViewModel
 
         public bool CanExecute(object parameter)
         {
-            return BoardView.game.IsValidMove((Vector2D)parameter);
+                return BoardView.game.IsValidMove((Vector2D)parameter);
         }
 
         public void Execute(object parameter)
@@ -40,10 +40,6 @@ namespace ViewModel
             BoardView.Width = BoardView.game.Board.Width;
             BoardView.CountBlack = BoardView.game.Board.CountStones(Player.BLACK);
             BoardView.CountWhite = BoardView.game.Board.CountStones(Player.WHITE);
-            if (BoardView.game.IsGameOver)
-            {
-                endGameCommand = new EndGameCommand(optionsView, BoardView);
-            }
             BoardView.NotifyElement();
         }
     }

@@ -18,8 +18,8 @@ namespace ViewModel
 
         public event EventHandler CanExecuteChanged
         {
-            add { }
-            remove { }
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
         }
 
         public bool CanExecute(object parameter)
@@ -43,7 +43,8 @@ namespace ViewModel
             {
                 endWindow.endResult = "DRAW";
             }
-            this.optionsView.SelectedOptionPane = new OptionsViewModel.OptionsCategory(endWindow);          
+            this.optionsView.SelectedOptionPane = new OptionsViewModel.OptionsCategory(endWindow);
+            BoardView.game.IsGameOver.Equals(true);
         }
     } 
 }

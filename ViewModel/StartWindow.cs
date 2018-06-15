@@ -22,7 +22,6 @@ namespace ViewModel
             this.optionsView = optionsViewModel;
             try
             {
-                Board = ReversiBoard.CreateInitialState(Width, Height);
                 if(playerOne == null)
                 {
                     playerOne = "Sonic";
@@ -31,13 +30,14 @@ namespace ViewModel
                 {
                     playerTwo = "Mario";
                 }
+                Width = 6;
+                Height = 6;
                 var board = new BoardViewModel();
                 board.playerOne = playerOne;
                 board.playerTwo = playerTwo;
             }
             catch (Exception)
             {
-                Board = ReversiBoard.CreateInitialState(6, 6);
                 if (playerOne == null)
                 {
                     playerOne = "Sonic";

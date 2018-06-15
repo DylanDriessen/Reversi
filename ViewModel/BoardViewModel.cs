@@ -37,6 +37,7 @@ namespace ViewModel
             try
             {
                 this.game = new ReversiGame(reversiBoard.Width, reversiBoard.Height);
+                System.Diagnostics.Debug.WriteLine(reversiBoard.Width);
             }
             catch
             {
