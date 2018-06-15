@@ -9,6 +9,7 @@ using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Threading;
 
 namespace ViewModel
 {
@@ -31,6 +32,8 @@ namespace ViewModel
         public StartWindow startWindow { get; set; }
         public string playerOne { get; set; }
         public string playerTwo { get; set; }
+        private string _currentTime;
+        public DispatcherTimer _timer;
 
         public BoardViewModel(ReversiBoard reversiBoard, OptionsViewModel options)
         {
@@ -49,6 +52,14 @@ namespace ViewModel
             this.optionsView = options;
             this.endGameCommand = new EndGameCommand(optionsView, this);
 
+            _timer = new DispatcherTimer(DispatcherPriority.Render);
+            _timer.Interval = TimeSpan.FromSeconds(1);
+            _timer.Tick += (sender, args) =>
+            {
+                CurrentTime = DateTime.Now.ToLongTimeString();
+            };
+            _timer.Start();
+
             for (int i = 0; i < game.Board.Height; i++)
             {
                 var boardRow = new BoardRowViewModel(game);
@@ -61,8 +72,24 @@ namespace ViewModel
             }
         }
 
+
         public BoardViewModel()
         {
+        }
+
+        public string CurrentTime
+        {
+            get
+            {
+                return this._currentTime;
+            }
+            set
+            {
+                if (_currentTime == value)
+                    return;
+                _currentTime = value;
+                OnPropertyChanged("CurrentTime");
+            }
         }
 
         public int Height
